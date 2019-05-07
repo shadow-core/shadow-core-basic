@@ -1,80 +1,16 @@
 /**
- * Basic controller with some common method
+ * Basic controller with some common methods
  */
 export default class BasicController {
     /**
      * Constructor
      */
     constructor() {
-        this.json_answers = {}; //Responses in JSON format
-        this.helpers = {}; //Controller action helpers
-
-        this.trim_exceptions = ['password', 'password_check'];
-    }
-
-    /**
-     * Get JSON answer for controller action
-     *
-     * @param action
-     * @return {*}
-     */
-    getJsonAnswer(action) {
-        return this.json_answers[action];
-    }
-
-    /**
-     * Get helper for the controller action
-     *
-     * @param action
-     * @return {*}
-     */
-    getHelper(action) {
-        return this.helpers[action];
-    }
-
-    /**
-     * Get action params.
-     *
-     * @param params_list
-     * @param req
-     * @return {Array}
-     */
-    getActionParams(params_list, req) {
-        let result = [];
-        params_list.forEach((param_name) => {
-            if (param_name in req.body) {
-                result[param_name] = this.getActionParam(param_name, req);
-            } else {
-                result[param_name] = null;
-            }
-        });
-        return result;
-    }
-
-    /**
-     * Get single action param.
-     *
-     * @param param_name
-     * @param req
-     * @return {*}
-     */
-    getActionParam(param_name, req) {
-        let result = null;
-        if (this.trim_exceptions.indexOf(param_name) > -1) {
-            result = req.body[param_name];
-        } else {
-            if (req.body[param_name]) {
-                let _v = req.body[param_name].toString();
-                result = _v.trim();
-            } else {
-                result  = null;
-            }
-        }
-        return result;
     }
 
     /**
      * Return error 422 - validation error.
+     * This also return array of validation errors.
      *
      * @param errors
      * @param res
@@ -91,7 +27,7 @@ export default class BasicController {
     }
 
     /**
-     * Return error 404
+     * Return error 404. This will also return object type and error message
      *
      * @param res
      * @param object_type
