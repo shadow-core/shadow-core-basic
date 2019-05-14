@@ -7,45 +7,51 @@ const { matchedData } = require('express-validator/filter');
  */
 export default class ExpressCoreBasic {
   constructor() {
+    /**
+     * Object with JSON answers.
+     *
+     * @member ExpressCoreBasic#json_answers
+     * @type {Object}
+     */
     this.json_answers = {};
   }
 
   /**
-   * Add json answers
+   * Add possible JSON answers for controller action.
    *
-   * @param type
-   * @param data
+   * @param {String} actionType Action type.
+   * @param {Object} data Object with possible JSON answers.
    */
-  addJsonAnswers(type, data) {
-    this.json_answers[type] = data;
+  addJsonAnswers(actionType, data) {
+    this.json_answers[actionType] = data;
   }
 
   /**
    * Return json message for action type.
    *
-   * @param action_type
-   * @param message_type
-   * @return {*}
+   * @param {String} actionType Action type.
+   * @param {String} messageType Message type.
+   * @return {Object} Object with specified JSON answer.
    */
   getJsonAnswer(actionType, messageType) {
     return this.json_answers[actionType][messageType];
   }
 
   /**
-   * Get express request and return errors
+   * Get express request and return errors.
    *
-   * @param {Object} req
-   * @return {Result<any>}
+   * @param {Object} req Request from express.js
+   * @return {Object}
    */
   static getValidationResult(req) {
     return validationResult(req);
   }
 
   /**
-   * Return data from request
+   * Return data from request.
    *
-   * @param {Object} req
-   * @return {Record<string, any>}
+   * @param {Object} req Requests from express.js
+   * @return {Object}
    */
   static getMatchedData(req) {
     return matchedData(req);

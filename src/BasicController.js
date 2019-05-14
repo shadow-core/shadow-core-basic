@@ -1,13 +1,15 @@
 /**
- * Basic controller with some common methods
+ * @class BasicController
+ * @classdesc Basic controller with some common methods.
+ *            Use this class to build your controller for express.js
  */
 export default class BasicController {
   /**
    * Return error 422 - validation error.
-   * This also return array of validation errors.
+   * This also returns array of validation errors for the JSON answer.
    *
-   * @param errors
-   * @param res
+   * @param {Object} errors List of errors return from validation.
+   * @param {Object} res express.js response
    * @return {*}
    */
   returnInvalidErrors(errors, res) {
@@ -21,14 +23,14 @@ export default class BasicController {
   }
 
   /**
-   * Return error 404. This will also return object type and error message
+   * Return error 404. This will also return object type and error message.
    *
-   * @param {Object} res
-   * @param {String} objectType
-   * @param {String} message
+   * @param {Object} res express.js response
+   * @param {String} objectType Object type that is missing.
+   * @param {String} message Additional message for error.
    * @return {*}
    */
-  static returnNotFoundError(res, objectType, message) {
+  returnNotFoundError(res, objectType, message) {
     return res.status(404).json({
       success: false,
       code: 404,
@@ -39,10 +41,12 @@ export default class BasicController {
   }
 
   /**
-   * Prepare invalid errors
+   * Prepare invalid errors.
+   * This method will run through errors returned by express-validator and make
+   * readable JSON with error.
    *
-   * @param errors
-   * @return {Array}
+   * @param {Object} errors List of errors from express-validator
+   * @return {Array} prepared JSON array to return in response
    */
   prepareInvalidErrors(errors) {
     const result = [];
@@ -59,11 +63,11 @@ export default class BasicController {
   /**
    * Return success result.
    *
-   * @param data
-   * @param res
+   * @param {Object} data JSON data to return in the response.
+   * @param {Object} res express.js response.
    * @return {*}
    */
-  static returnSuccess(data, res) {
+  returnSuccess(data, res) {
     const result = data;
     result.success = true;
     return res.json(result);
@@ -77,7 +81,7 @@ export default class BasicController {
      * @param status
      * @return {*}
      */
-  static returnError(data, res, status = 200) {
+  returnError(data, res, status = 200) {
     const result = {};
     result.success = false;
     return res.status(status).json(result);
@@ -90,7 +94,7 @@ export default class BasicController {
    * @param {String|Object} msg
    * @return {Object}
    */
-  static fixInvalidErrorMessage(msg) {
+  fixInvalidErrorMessage(msg) {
     let result;
     if (typeof msg === 'string') {
       try {
