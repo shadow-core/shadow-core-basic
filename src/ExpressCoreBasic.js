@@ -2,7 +2,8 @@ const { validationResult } = require('express-validator/check');
 const { matchedData } = require('express-validator/filter');
 
 /**
- * Basic class for all core classes with common methods.
+ * @class ExpressCoreBasic
+ * @classdesc Basic class for all core classes with common methods.
  */
 export default class ExpressCoreBasic {
     constructor() {
