@@ -6,7 +6,8 @@
   "license": "ISC",
   "scripts": {
     "build": "npx babel src --out-dir lib  --source-maps inline --copy-files",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "check-code": "npx eslint ./src"
   },
   "main": "lib/index.js",
   "dependencies": {

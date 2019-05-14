@@ -6,48 +6,48 @@ const { matchedData } = require('express-validator/filter');
  * @classdesc Basic class for all core classes with common methods.
  */
 export default class ExpressCoreBasic {
-    constructor() {
-       this.json_answers = {};
-    }
+  constructor() {
+    this.json_answers = {};
+  }
 
-    /**
-     * Add json answers
-     *
-     * @param type
-     * @param data
-     */
-    addJsonAnswers(type, data) {
-        this.json_answers[type] = data;
-    }
+  /**
+   * Add json answers
+   *
+   * @param type
+   * @param data
+   */
+  addJsonAnswers(type, data) {
+    this.json_answers[type] = data;
+  }
 
-    /**
-     * Return json message for action type.
-     *
-     * @param action_type
-     * @param message_type
-     * @return {*}
-     */
-    getJsonAnswer(action_type, message_type) {
-        return this.json_answers[action_type][message_type];
-    }
+  /**
+   * Return json message for action type.
+   *
+   * @param action_type
+   * @param message_type
+   * @return {*}
+   */
+  getJsonAnswer(actionType, messageType) {
+    return this.json_answers[actionType][messageType];
+  }
 
-    /**
-     * Get express request and return errors
-     *
-     * @param req
-     * @return {Result<any>}
-     */
-    getValidationResult(req) {
-        return validationResult(req);
-    }
+  /**
+   * Get express request and return errors
+   *
+   * @param {Object} req
+   * @return {Result<any>}
+   */
+  static getValidationResult(req) {
+    return validationResult(req);
+  }
 
-    /**
-     * Return data from request
-     *
-     * @param req
-     * @return {Record<string, any>}
-     */
-    getMatchedData(req) {
-        return matchedData(req);
-    }
+  /**
+   * Return data from request
+   *
+   * @param {Object} req
+   * @return {Record<string, any>}
+   */
+  static getMatchedData(req) {
+    return matchedData(req);
+  }
 }
