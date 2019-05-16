@@ -43,7 +43,7 @@ export default class ExpressCoreBasic {
    * @param {Object} req Request from express.js
    * @return {Object}
    */
-  static getValidationResult(req) {
+  getValidationResult(req) {
     return validationResult(req);
   }
 
@@ -53,7 +53,7 @@ export default class ExpressCoreBasic {
    * @param {Object} req Requests from express.js
    * @return {Object}
    */
-  static getMatchedData(req) {
+  getMatchedData(req) {
     return matchedData(req);
   }
 }
