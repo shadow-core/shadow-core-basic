@@ -13,7 +13,7 @@ export default class ExpressCoreBasic {
      * @member ExpressCoreBasic#json_responses
      * @type {Object}
      */
-    this.json_responses = {};
+    this.jsonResponses = {};
   }
 
   /**
@@ -23,7 +23,7 @@ export default class ExpressCoreBasic {
    * @param {Object} data Object with possible JSON responses.
    */
   addJsonResponses(actionType, data) {
-    this.json_response[actionType] = data;
+    this.jsonResponses[actionType] = data;
   }
 
   /**
@@ -34,7 +34,7 @@ export default class ExpressCoreBasic {
    * @return {Object} Object with specified JSON response.
    */
   getJsonResponse(actionType, messageType) {
-    return this.json_responses[actionType][messageType];
+    return this.jsonResponses[actionType][messageType];
   }
 
   /**
