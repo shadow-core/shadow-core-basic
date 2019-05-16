@@ -8,22 +8,22 @@ const { matchedData } = require('express-validator/filter');
 export default class ExpressCoreBasic {
   constructor() {
     /**
-     * Object with JSON answers.
+     * Object with JSON responses.
      *
-     * @member ExpressCoreBasic#json_answers
+     * @member ExpressCoreBasic#json_responses
      * @type {Object}
      */
-    this.json_answers = {};
+    this.json_responses = {};
   }
 
   /**
-   * Add possible JSON answers for controller action.
+   * Add possible JSON responses for controller action.
    *
    * @param {String} actionType Action type.
-   * @param {Object} data Object with possible JSON answers.
+   * @param {Object} data Object with possible JSON responses.
    */
-  addJsonAnswers(actionType, data) {
-    this.json_answers[actionType] = data;
+  addJsonResponses(actionType, data) {
+    this.json_response[actionType] = data;
   }
 
   /**
@@ -31,10 +31,10 @@ export default class ExpressCoreBasic {
    *
    * @param {String} actionType Action type.
    * @param {String} messageType Message type.
-   * @return {Object} Object with specified JSON answer.
+   * @return {Object} Object with specified JSON response.
    */
-  getJsonAnswer(actionType, messageType) {
-    return this.json_answers[actionType][messageType];
+  getJsonResponse(actionType, messageType) {
+    return this.json_responses[actionType][messageType];
   }
 
   /**

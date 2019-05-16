@@ -6,7 +6,7 @@
 export default class BasicController {
   /**
    * Return error 422 - validation error.
-   * This also returns array of validation errors for the JSON answer.
+   * This also returns array of validation errors for the JSON response.
    *
    * @param {Object} errors List of errors return from validation.
    * @param {Object} res express.js response
