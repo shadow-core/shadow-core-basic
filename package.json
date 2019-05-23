@@ -1,7 +1,7 @@
 {
-  "name": "express-core-basic",
+  "name": "shadow-core-basic",
   "version": "0.0.1",
-  "description": "Express core - basic",
+  "description": "Basic classes for Shadow-core project",
   "author": "Gray Hound",
   "license": "ISC",
   "scripts": {
