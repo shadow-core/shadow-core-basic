@@ -55,7 +55,7 @@ export default class BasicController {
       msg = this.fixInvalidErrorMessage(msg);
       const errorData = msg;
       errorData.param = error.param;
-      result.push(result, errorData);
+      result.push(errorData);
     });
     return result;
   }
