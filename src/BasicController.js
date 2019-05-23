@@ -51,7 +51,7 @@ export default class BasicController {
   prepareInvalidErrors(errors) {
     const result = [];
     errors.forEach((error) => {
-      let msg = error;
+      let msg = error.msg;
       msg = this.fixInvalidErrorMessage(msg);
       const errorData = msg;
       errorData.param = error.param;
@@ -96,9 +96,9 @@ export default class BasicController {
    */
   fixInvalidErrorMessage(msg) {
     let result = msg;
-    if (typeof msg === 'string') {
+    if (typeof result === 'string') {
       try {
-        result = JSON.parse(msg);
+        result = JSON.parse(result);
       } catch (e) {
         result = e.message;
       }
