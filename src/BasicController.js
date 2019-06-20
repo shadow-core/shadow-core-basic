@@ -82,7 +82,7 @@ export default class BasicController {
      * @return {*}
      */
   returnError(data, res, status = 200) {
-    const result = {};
+    const result = data;
     result.success = false;
     return res.status(status).json(result);
   }
