@@ -100,7 +100,7 @@ export default class BasicController {
       try {
         result = JSON.parse(result);
       } catch (e) {
-        result = e.message;
+        throw new Error(e.message);
       }
     }
     return result;
