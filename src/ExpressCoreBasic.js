@@ -1,6 +1,3 @@
-const { validationResult } = require('express-validator/check');
-const { matchedData } = require('express-validator/filter');
-
 /**
  * @class ExpressCoreBasic
  * @classdesc Basic class for all core classes with common methods.
@@ -35,25 +32,5 @@ export default class ExpressCoreBasic {
    */
   getJsonResponse(actionType, messageType) {
     return this.jsonResponses[actionType][messageType];
-  }
-
-  /**
-   * Get express request and return errors.
-   *
-   * @param {Object} req Request from express.js
-   * @return {Object}
-   */
-  getValidationResult(req) {
-    return validationResult(req);
-  }
-
-  /**
-   * Return data from request.
-   *
-   * @param {Object} req Requests from express.js
-   * @return {Object}
-   */
-  getMatchedData(req) {
-    return matchedData(req);
   }
 }

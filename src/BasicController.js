@@ -1,9 +1,27 @@
+const { validationResult } = require('express-validator/check');
+const { matchedData } = require('express-validator/filter');
+
 /**
  * @class BasicController
  * @classdesc Basic controller with some common methods.
  *            Use this class to build your controller for express.js
  */
 export default class BasicController {
+  /**
+   * Get validation errors from express-validator and return 422 response with found errors.
+   *
+   * @param {Object} req Express.js request
+   * @param {Object} res Express.js response
+   * @return {*}
+   */
+  checkValidationErrors(req, res, next) {
+    const errors = this.getValidationResult(req);
+    if (!errors.isEmpty()) {
+      return this.returnInvalidErrors(errors.array(), res);
+    }
+    next();
+  }
+
   /**
    * Return error 422 - validation error.
    * This also returns array of validation errors for the JSON response.
@@ -104,5 +122,25 @@ export default class BasicController {
       }
     }
     return result;
+  }
+
+  /**
+   * Get express request and return errors.
+   *
+   * @param {Object} req Request from express.js
+   * @return {Object}
+   */
+  getValidationResult(req) {
+    return validationResult(req);
+  }
+
+  /**
+   * Return data from request.
+   *
+   * @param {Object} req Requests from express.js
+   * @return {Object}
+   */
+  getMatchedData(req) {
+    return matchedData(req);
   }
 }
