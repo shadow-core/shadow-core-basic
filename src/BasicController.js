@@ -1,5 +1,5 @@
-const { validationResult } = require('express-validator/check');
 const { matchedData } = require('express-validator/filter');
+const { validationResult } = require('express-validator/check');
 
 /**
  * @class BasicController
@@ -7,14 +7,7 @@ const { matchedData } = require('express-validator/filter');
  *            Use this class to build your controller for express.js
  */
 export default class BasicController {
-  /**
-   * Get validation errors from express-validator and return 422 response with found errors.
-   *
-   * @param {Object} req Express.js request
-   * @param {Object} res Express.js response
-   * @return {*}
-   */
-  checkValidationErrors(req, res, next) {
+  validate(req, res, next) {
     const errors = this.getValidationResult(req);
     if (!errors.isEmpty()) {
       return this.returnInvalidErrors(errors.array(), res);
@@ -124,12 +117,6 @@ export default class BasicController {
     return result;
   }
 
-  /**
-   * Get express request and return errors.
-   *
-   * @param {Object} req Request from express.js
-   * @return {Object}
-   */
   getValidationResult(req) {
     return validationResult(req);
   }
