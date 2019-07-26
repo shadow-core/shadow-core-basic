@@ -7,6 +7,17 @@ const { validationResult } = require('express-validator/check');
  *            Use this class to build your controller for express.js
  */
 export default class BasicController {
+  /**
+   * Constructor. Pass models to it.
+   *
+   * @param {Object} models Object with applications models.
+   * @param {Object} config Additional configuration things.
+   */
+  constructor(models, config = {}) {
+    this.models = models;
+    this.config = config;
+  }
+
   validate(req, res, next) {
     const errors = this.getValidationResult(req);
     if (!errors.isEmpty()) {
