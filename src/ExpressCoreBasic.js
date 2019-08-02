@@ -3,7 +3,7 @@
  * @classdesc Basic class for all core classes with common methods.
  */
 export default class ExpressCoreBasic {
-  constructor() {
+  constructor(app) {
     /**
      * Object with JSON responses.
      *
@@ -11,6 +11,8 @@ export default class ExpressCoreBasic {
      * @type {Object}
      */
     this.jsonResponses = {};
+
+    this.app = app;
   }
 
   /**

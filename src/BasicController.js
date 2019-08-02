@@ -13,9 +13,8 @@ export default class BasicController {
    * @param {Object} models Object with applications models.
    * @param {Object} config Additional configuration things.
    */
-  constructor(models, config = {}) {
-    this.models = models;
-    this.config = config;
+  constructor(app) {
+    this.app = app;
   }
 
   validate(req, res, next) {

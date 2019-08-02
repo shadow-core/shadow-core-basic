@@ -3,8 +3,8 @@
  * @classdesc Interface for validators.
  */
 export default class BasicValidatorInterface {
-  constructor(models) {
-    this.models = models;
+  constructor(app) {
+    this.app = app;
   }
 
   validators() {
